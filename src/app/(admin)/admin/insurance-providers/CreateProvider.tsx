@@ -1,7 +1,7 @@
 "use client"
 import { useAllStateQuery, useCreateInsuranceMutation } from "@/app/api/admin/insuranceApi";
 import { useAllPolicyQuery } from "@/app/api/admin/policyApi";
-import { StateName, StateType } from "@/utility/types/admin/insurance-provider/providerType";
+import { State } from "@/utility/types/admin/insurance-provider/providerType";
 import { AllPolicyApiResponse } from "@/utility/types/admin/policy/policyType";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import Image from "next/image";
@@ -90,10 +90,10 @@ const CreateProvider: React.FC<PolicyViewProps> = ({
 
 
 
-    const [selectedStates, setSelectedStates] = useState<StateName[]>([]);
+    const [selectedStates, setSelectedStates] = useState<State[]>([]);
 
     const { data: stateData } = useAllStateQuery([]);
-    const allStates: StateName[] = stateData?.data || [];
+    const allStates: State[] = stateData?.data || [];
 
     const handleStateSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedId = Number(e.target.value);
